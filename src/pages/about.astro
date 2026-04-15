@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Prose from '../components/Prose.astro';
+import { siteConfig } from '../site-config';
+
+const title = 'About';
+const description = 'Architecture with an engineering foundation.';
+---
+
+<Layout title={`${title} | Martin Sakowski`} pageTitle={`${title} | Martin Sakowski`} description={description}>
+  <PageIntro title="Curriculum vitae" description={description} />
+
+  <section class="hero about-overview">
+    <div class="hero-copy about-overview-copy">
+      <p class="hero-summary">
+        I&apos;m a Principal Solutions Architect at Amazon Web Services based in {siteConfig.person.location}. Over the
+        last 15+ years I&apos;ve worked from embedded systems to enterprise cloud modernization, always with the same
+        goal: make complex systems easier to build, run, and improve.
+      </p>
+    </div>
+    <figure class="profile-photo profile-photo-wide about-profile-photo">
+      <img src="/martin-speaker.jpeg" alt="Martin Sakowski speaking on stage at a conference." />
+    </figure>
+  </section>
+
+  <Prose class="about-prose">
+    <h2>Experience</h2>
+    <div class="experience-list">
+      <article class="experience-item">
+        <h3 class="experience-role">Principal Solutions Architect, Amazon Web Services</h3>
+        <p class="experience-period"><strong>Apr 2026 - present</strong></p>
+        <ul>
+          <li>Lead strategic architecture work with large enterprise retailers across Germany and globally.</li>
+          <li>Drive the Agentic Commerce and Agent Experience (AX) practice within AWS.</li>
+          <li>Shape regional and global platform engineering and Developer Experience/AI-DLC initiatives that improve how teams scale delivery.</li>
+          <li>Operate as an executive-level advisor on cloud transformation, modern architecture patterns, and organizational change.</li>
+        </ul>
+      </article>
+      <article class="experience-item">
+        <h3 class="experience-role">Senior Solutions Architect, Amazon Web Services</h3>
+        <p class="experience-period"><strong>Sep 2020 - Mar 2026</strong></p>
+        <ul>
+          <li>Advised major enterprise retailers on cloud modernization, serverless adoption, and event-driven architecture.</li>
+          <li>Became a Gold member of the AWS Serverless Technical Field Community.</li>
+          <li>Led multiple regional and global initiatives focused on platform advancement and field enablement.</li>
+          <li>Built a strong external profile through 50+ international speaking engagements on architecture and cloud topics.</li>
+        </ul>
+      </article>
+      <article class="experience-item">
+        <h3 class="experience-role">Product Owner and Lead Architect, AVIATAR, Lufthansa Technik</h3>
+        <p class="experience-period"><strong>May 2017 - Aug 2020</strong></p>
+        <ul>
+          <li>Managed an agile DevOps team responsible for the AVIATAR platform.</li>
+          <li>Developed a cloud-native microservice data platform for the aviation industry on Azure.</li>
+          <li>Introduced infrastructure automation with Ansible and operated large-scale OpenShift, Kafka, MongoDB, and Hadoop clusters.</li>
+          <li>Took on Business Information Security Officer responsibilities alongside product and platform leadership.</li>
+        </ul>
+      </article>
+      <article class="experience-item">
+        <h3 class="experience-role">Lead Systems Engineer, Original Equipment Innovation, Lufthansa Technik</h3>
+        <p class="experience-period"><strong>Feb 2011 - Apr 2017</strong></p>
+        <ul>
+          <li>Managed a software development and system engineering team.</li>
+          <li>Led multi-million dollar development projects in the cabin and avionics domain.</li>
+          <li>Developed embedded software for VIP and business jet IFE/CMS systems.</li>
+          <li>Automated system engineering processes and established an engineering department for a US-based joint venture.</li>
+        </ul>
+      </article>
+      <article class="experience-item">
+        <h3 class="experience-role">Technik Student, Lufthansa Technik</h3>
+        <p class="experience-period"><strong>Aug 2007 - Jan 2011</strong></p>
+        <ul>
+          <li>Started at Lufthansa Technik in 2007 through an integrated degree programme.</li>
+          <li>Built the engineering foundation that later carried into software, systems, and platform leadership roles.</li>
+          <li>Completed academic and practical training in electrical engineering and information technology in parallel.</li>
+        </ul>
+      </article>
+    </div>
+    <h2>Highlights</h2>
+    <ul>
+      <li>Lead the Agentic Commerce and Agent Experience practice within AWS</li>
+      <li>Advise major enterprise retailers on cloud transformation across Germany and EMEA</li>
+      <li>Gold member of the AWS Serverless Technical Field Community</li>
+      <li>Led platform engineering initiatives across regional and global AWS teams</li>
+      <li>50+ international speaking engagements across architecture and cloud topics</li>
+    </ul>
+    <h2>Education</h2>
+    <ul>
+      <li>M.Sc. Technology Management, Open University, graduated February 2014</li>
+      <li>B.Eng. Electrical Engineering and Information Technology, University of Applied Science, graduated February 2011</li>
+    </ul>
+    <h2>Areas of expertise</h2>
+    <ul>
+      <li>Cloud architecture, serverless architecture, and event-driven systems</li>
+      <li>Platform engineering, Kubernetes, and container orchestration</li>
+      <li>AWS, Azure, DevOps, and infrastructure automation</li>
+      <li>AI/ML solutions, agentic AI, and intelligent automation</li>
+      <li>Executive advisory, enterprise transformation, and public speaking</li>
+    </ul>
+    <p>
+      I care most about architecture that improves real delivery outcomes: clearer ownership, simpler operating
+      models, better developer leverage, and systems that can evolve without constant organizational friction.
+    </p>
+  </Prose>
+</Layout>

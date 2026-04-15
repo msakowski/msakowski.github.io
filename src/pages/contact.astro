@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { siteConfig } from '../site-config';
+---
+
+<Layout
+  title="Contact | Martin Sakowski"
+  pageTitle="Contact | Martin Sakowski"
+  description="Contact and profile links for Martin Sakowski."
+>
+  <PageIntro title="Contact" description="A few simple ways to reach me." />
+
+  <section class="contact-grid">
+    <a class="content-card" href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer">
+      <h2>LinkedIn</h2>
+      <p>Professional background and the easiest way to get in touch.</p>
+    </a>
+    <a class="content-card" href={siteConfig.links.github} target="_blank" rel="noopener noreferrer">
+      <h2>GitHub</h2>
+      <p>Code, examples, and technical material.</p>
+    </a>
+  </section>
+</Layout>

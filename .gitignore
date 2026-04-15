@@ -1,8 +1,11 @@
 # build output
 dist/
 
-# generated types
+# Astro generated files
 .astro/
+
+# Astro local env file
+.env.local
 
 # dependencies
 node_modules/
@@ -22,3 +25,14 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local editor settings
+.vscode/
+
+# local AI / agent tooling
+.kiro/
+.claude/
+.codex/
+
+# local planning docs
+PRD.md

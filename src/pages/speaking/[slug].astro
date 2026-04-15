@@ -1,0 +1,56 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Prose from '../../components/Prose.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('talks', ({ data }) => data.published);
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout
+  title={`${entry.data.title} | Speaking | Martin Sakowski`}
+  pageTitle={`${entry.data.title} | Speaking | Martin Sakowski`}
+  description={entry.data.description}
+>
+  <section class="entry-hero">
+    <p class="eyebrow">Speaking</p>
+    <h1>{entry.data.title}</h1>
+    <p>{entry.data.description}</p>
+    <p class="meta-line">
+      {entry.data.event} • {entry.data.location} • {entry.data.date.toLocaleDateString('en-US', { dateStyle: 'medium' })}
+    </p>
+  </section>
+
+  <div class="detail-grid">
+    <aside class="detail-sidebar">
+      <div>
+        <h2>Resources</h2>
+        <ul class="resource-list">
+          {entry.data.slidesUrl && (
+            <li>
+              <a href={entry.data.slidesUrl} target="_blank" rel="noopener noreferrer">Slides</a>
+            </li>
+          )}
+          {entry.data.videoUrl && (
+            <li>
+              <a href={entry.data.videoUrl} target="_blank" rel="noopener noreferrer">Video</a>
+            </li>
+          )}
+          {entry.data.codeUrl && (
+            <li>
+              <a href={entry.data.codeUrl} target="_blank" rel="noopener noreferrer">Code</a>
+            </li>
+          )}
+        </ul>
+      </div>
+    </aside>
+    <Prose>
+      <Content />
+    </Prose>
+  </div>
+</Layout>

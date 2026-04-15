@@ -1,0 +1,17 @@
+---
+import { siteConfig } from '../site-config';
+---
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p>
+      © {new Date().getFullYear()} {siteConfig.person.name}
+    </p>
+    <div class="footer-links">
+      <a href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="/imprint">Imprint</a>
+      <a href="/rss.xml">RSS</a>
+    </div>
+  </div>
+</footer>

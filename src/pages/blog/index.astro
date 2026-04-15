@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import PostListItem from '../../components/PostListItem.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<Layout
+  title="Blog | Martin Sakowski"
+  pageTitle="Blog | Martin Sakowski"
+  description="Technical writing on architecture, modernization, delivery, and communication."
+>
+  <PageIntro title="Blog" description="Short notes on architecture, delivery, and change." />
+
+  <div class="blog-list">
+    {posts.map((post) => (
+      <PostListItem
+        href={`/blog/${post.id}/`}
+        date={post.data.pubDate}
+        title={post.data.title}
+        description={post.data.description}
+        tags={post.data.tags}
+      />
+    ))}
+  </div>
+</Layout>

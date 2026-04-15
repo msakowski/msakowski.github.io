@@ -1,0 +1,37 @@
+---
+import { siteConfig } from '../site-config';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="brand" href="/">
+      <span class="brand-signature" aria-hidden="true">
+        <img src="/M-logo.png" alt="" />
+      </span>
+      <span class="brand-copy">
+        <strong>{siteConfig.person.name}</strong>
+        <span>{siteConfig.person.brandTitle}</span>
+      </span>
+    </a>
+
+    <div class="nav-shell">
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          {siteConfig.nav.map((item) => (
+            <li>
+              <a class={currentPath === item.href ? 'is-active' : ''} href={item.href}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,51 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Prose from '../../components/Prose.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const index = allPosts.findIndex((post) => post.id === entry.id);
+const newerPost = index > 0 ? allPosts[index - 1] : undefined;
+const olderPost = index < allPosts.length - 1 ? allPosts[index + 1] : undefined;
+const { Content } = await render(entry);
+---
+
+<Layout
+  title={`${entry.data.title} | Blog | Martin Sakowski`}
+  pageTitle={`${entry.data.title} | Blog | Martin Sakowski`}
+  description={entry.data.description}
+  ogType="article"
+>
+  <article class="post-shell">
+    <header class="entry-hero">
+      <p class="eyebrow">Blog</p>
+      <h2>{entry.data.title}</h2>
+      <p>{entry.data.description}</p>
+      <p class="meta-line">{entry.data.pubDate.toLocaleDateString('en-US', { dateStyle: 'medium' })}</p>
+      {entry.data.tags.length > 0 && (
+        <ul class="tag-list">
+          {entry.data.tags.map((tag) => (
+            <li>{tag}</li>
+          ))}
+        </ul>
+      )}
+    </header>
+
+    <Prose>
+      <Content />
+    </Prose>
+  </article>
+
+  <nav class="post-nav" aria-label="Post navigation">
+    {newerPost ? <a href={`/blog/${newerPost.id}/`}>← {newerPost.data.title}</a> : <span />}
+    {olderPost ? <a href={`/blog/${olderPost.id}/`}>{olderPost.data.title} →</a> : <span />}
+  </nav>
+</Layout>

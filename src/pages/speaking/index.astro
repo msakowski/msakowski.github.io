@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import { speakingEngagements } from '../../data/speaking';
+
+const talksByYear = Object.entries(
+  speakingEngagements.reduce<Record<number, typeof speakingEngagements>>((acc, talk) => {
+    acc[talk.year] ??= [];
+    acc[talk.year].push(talk);
+    return acc;
+  }, {}),
+).sort(([a], [b]) => Number(b) - Number(a));
+---
+
+<Layout
+  title="Speaking | Martin Sakowski"
+  pageTitle="Speaking | Martin Sakowski"
+  description="Talks, sessions, and speaking material from Martin Sakowski."
+>
+  <PageIntro
+    title="Talks"
+    description="Selected talks on architecture, platforms, event-driven systems, and AI."
+  />
+
+  {talksByYear.map(([year, talks]) => (
+    <section class="section-grid">
+      <div class="section-heading">
+        <h2>{year}</h2>
+      </div>
+      <div class="stack-list">
+        {talks.map((talk) => (
+          <article class="stack-item">
+            <div>
+              <p class="meta-line">{talk.event}</p>
+              <h3>{talk.title}</h3>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
+</Layout>

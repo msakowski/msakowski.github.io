@@ -1,11 +1,51 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { siteConfig } from '../site-config';
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title={`${siteConfig.person.name} | ${siteConfig.person.role}`}
+  pageTitle={`${siteConfig.person.name} | ${siteConfig.person.role}`}
+  description={siteConfig.description}
+>
+  <section class="home-hero">
+    <div class="home-intro">
+      <h1>{siteConfig.person.name}</h1>
+      <p class="home-tagline">
+        <span class="home-tagline-main">{siteConfig.person.role}</span>
+        <span class="home-tagline-sub">AWS</span>
+      </p>
+      <p class="meta-line">{siteConfig.person.location}</p>
+      <p class="home-summary">{siteConfig.person.summary}</p>
+      <div class="hero-actions">
+        <a class="button" href="/about">CV</a>
+        <a class="button button-secondary" href="/contact">Contact</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-grid home-destinations">
+    <div class="home-link-grid">
+      <a class="content-card" href="/about">
+        <p class="meta-line">01</p>
+        <h3>CV</h3>
+        <p>Experience, decisions, and background.</p>
+      </a>
+      <a class="content-card" href="/speaking">
+        <p class="meta-line">02</p>
+        <h3>Talks</h3>
+        <p>Selected talks on architecture and delivery.</p>
+      </a>
+      <a class="content-card" href="/blog">
+        <p class="meta-line">03</p>
+        <h3>Blog</h3>
+        <p>Short notes on architecture, delivery, and change.</p>
+      </a>
+      <a class="content-card" href="/contact">
+        <p class="meta-line">04</p>
+        <h3>Contact</h3>
+        <p>A few simple ways to reach me.</p>
+      </a>
+    </div>
+  </section>
 </Layout>
